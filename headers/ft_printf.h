@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:07:11 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 11:49:37 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:10:42 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 # include <limits.h>
 # include <stdarg.h>
 # include <stdio.h>
-# include <string.h>
 # include <stdlib.h>
+# include <string.h>
 
 typedef enum boolean
 {
@@ -41,6 +41,12 @@ typedef struct s_grouped_flags
 	t_printf_flag	zero;
 }					t_grouped_flags;
 
+void				ft_is_format_flag(char *str, t_printf_flag *flag);
+void				ft_is_precision_flag(char *str, t_printf_flag *flag);
+void				ft_is_plus_flag(char c, t_printf_flag *flag);
+void				ft_is_space_flag(char c, t_printf_flag *flag);
+void				ft_is_minus_flag(char *str, t_printf_flag *flag);
+size_t				ft_parse_flags(char *str, t_grouped_flags *flags);
 int					ft_printf(char *s, ...);
 
 #endif
