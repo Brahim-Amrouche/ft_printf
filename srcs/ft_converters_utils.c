@@ -1,18 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_converters_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 21:14:53 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 18:50:59 by bamrouch         ###   ########.fr       */
+/*   Created: 2022/11/06 19:06:19 by bamrouch          #+#    #+#             */
+/*   Updated: 2022/11/06 19:15:09 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
-int main()
+void ft_print_hex(long value)
 {
-    ft_printf(" %c  %#.+s",'a',"str");
+    if (value / 16 > 0)
+    {
+        ft_print_hex(value / 16);
+        ft_print_hex(value %16);
+    }
+    else 
+    {
+        if (value <= 9)
+            ft_putchar_fd("0123456789"[value],0);
+        else 
+            ft_putchar_fd("abcdef"[value%10],0);
+    }
+
 }

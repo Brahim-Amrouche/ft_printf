@@ -6,40 +6,56 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 15:14:05 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/06 18:29:09 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void	print_flags(t_grouped_flags flags)
-{
-	printf("format exists == %d \n", flags.format.exists);
-	printf("precision exists == %d \n", flags.precision.exists);
-	printf("plus exists == %d \n", flags.plus.exists);
-	printf("space exists == %d \n", flags.space.exists);
-	printf("minus exists == %d \n", flags.minus.exists);
-	printf("zero exists == %d \n", flags.zero.exists);
-}
+// void	print_flags(t_grouped_flags flags)
+// {
+// 	printf("format exists == %d \n", flags.format.exists);
+// 	printf("precision exists == %d \n", flags.precision.exists);
+// 	printf("plus exists == %d \n", flags.plus.exists);
+// 	printf("space exists == %d \n", flags.space.exists);
+// 	printf("minus exists == %d \n", flags.minus.exists);
+// 	printf("zero exists == %d \n ------------- \n", flags.zero.exists);
+// }
 
-int	ft_manage_printf_flags(va_list args, char *str)
+int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 {
 	ssize_t			printed_chars;
 	size_t			i;
-	t_grouped_flags	*flags;
+	t_grouped_flags	flags;
 
-	(void)printed_chars;
-	(void)args;
-	flags = ft_calloc(1, sizeof(t_grouped_flags));
-	i = ft_parse_flags(str, flags);
-	free(flags);
-	return (1);
+	printed_chars = 0;
+	ft_bzero(&flags, sizeof(t_grouped_flags));
+	i = ft_parse_flags(str, &flags, index);
+	if (str[i] == 'c')
+		printed_chars = ft_print_char(va_arg(args, int));
+	else if (str[i] == 's')
+		printed_chars = ft_print_str(va_arg(args, char *));
+	else if (str[i] == 'p')
+		return (1);
+	else if (str[i] == 'd')
+		return (1);
+	else if (str[i] == 'i')
+		return (1);
+	else if (str[i] == 'u')
+		return (1);
+	else if (str[i] == 'x')
+		return (1);
+	else if (str[i] == 'X')
+		return (1);
+	else if (str[i] == '%')
+		ft_putchar_fd('%', 0);
+	return (printed_chars);
 }
 
 int	ft_printf(char *s, ...)
 {
-	ssize_t	i;
+	size_t	i;
 	size_t	printed_chars;
 	va_list	args;
 
@@ -50,11 +66,11 @@ int	ft_printf(char *s, ...)
 	{
 		if (s[i] == '%')
 		{
-			printed_chars += ft_manage_printf_flags(args, s + i);
+			printed_chars += ft_manage_printf_flags(args, s + i, &i);
 			i++;
 			continue ;
 		}
-		printed_chars++;
+		printed_chars += ft_print_char(s[i]);
 		i++;
 	}
 	va_end(args);

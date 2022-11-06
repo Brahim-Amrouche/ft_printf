@@ -1,6 +1,4 @@
-SRCS = $
-{
-	wildcard./ srcs/*.c}
+SRCS = ${wildcard ./srcs/*.c}
 
 LIBFT_SRCS = ${wildcard ./libft/*.c}
 
@@ -31,5 +29,9 @@ fclean : clean
 	rm -f $(NAME)
 
 re : fclean all
+
+dev : all clean 
+	rm -f a.out
+	$(CC) $(FLAGS) main.c $(NAME)
 
 .PHONY : all clean fclean re	
