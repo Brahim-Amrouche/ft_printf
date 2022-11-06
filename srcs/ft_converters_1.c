@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:02:26 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 18:55:15 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/06 19:21:09 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,8 @@ size_t	ft_print_str(char *str)
 	return (i);
 }
 
+size_t ft_print_pointer(long pointer)
+{
+    
+}
 
