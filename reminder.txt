@@ -1,0 +1,22 @@
+bonus tags:
+
+- = adds spaces to the right of the argument
+
++ = adds the + sign for positive numbers , and the minus sign for negatives as it is the norm
+
+'space' = adds a space before the number if it is positive , and the minus is the same as per usual
+
+0 = adds leading zero at the begining of numbers , the number of added numbers should be higher than the number of bytes representing the number
+
+.n = for decimals it is the minimum number of digits to represent a number with  the empty digtis are replaced with zeroes , for strings it is the maximum of bytes to write
+
+# = formats the hex values with 0x or 0X at the begining 
+
+----------------
++ and 'space' are in the same condition prio to +
+
+- and 0 are in the same condition prio to -
+
+.n is a modifiers 
+
+# is a modifier as well
