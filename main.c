@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 21:14:53 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/07 10:53:25 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/08 00:55:54 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int main()
 {
-    char *p = "helllo";
-    printf("%#x \n",(unsigned int)p);
-    ft_printf("%p" ,p);
+    printf("%u",UINT_MAX);
 }

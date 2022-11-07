@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:02:26 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/07 10:49:53 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/08 00:32:51 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,9 @@ size_t	ft_print_str(char *str)
 size_t	ft_print_pointer(unsigned int p)
 {
 	return (ft_print_str("0x") + ft_print_hex(p));
+}
+
+size_t	ft_print_number(int i)
+{
+	return (ft_print_decimal(i));
 }
