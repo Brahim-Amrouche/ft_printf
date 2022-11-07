@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 21:14:53 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 18:50:59 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/07 10:53:25 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int main()
 {
-    ft_printf(" %c  %#.+s",'a',"str");
+    char *p = "helllo";
+    printf("%#x \n",(unsigned int)p);
+    ft_printf("%p" ,p);
 }

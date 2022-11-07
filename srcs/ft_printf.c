@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 18:29:09 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/07 10:59:50 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 	else if (str[i] == 's')
 		printed_chars = ft_print_str(va_arg(args, char *));
 	else if (str[i] == 'p')
-		return (1);
+		printed_chars = ft_print_pointer(va_arg(args,unsigned int));
 	else if (str[i] == 'd')
 		return (1);
 	else if (str[i] == 'i')
@@ -49,7 +49,7 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 	else if (str[i] == 'X')
 		return (1);
 	else if (str[i] == '%')
-		ft_putchar_fd('%', 0);
+		printed_chars = ft_print_char('%');
 	return (printed_chars);
 }
 
