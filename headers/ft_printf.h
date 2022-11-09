@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:07:11 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/08 00:35:35 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/09 01:02:29 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct s_grouped_flags
 /* Converters Logic */
 size_t				ft_print_char(char c);
 size_t				ft_print_str(char *str);
-size_t				ft_print_hex(unsigned int value);
+size_t				ft_print_hex(unsigned long long value , int maj);
 size_t				ft_print_pointer(unsigned int p);
 size_t				ft_print_decimal(long d);
 size_t				ft_print_number(int i);

@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/08 00:54:45 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/09 19:39:07 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 	else if (str[i] == 's')
 		printed_chars = ft_print_str(va_arg(args, char *));
 	else if (str[i] == 'p')
-		printed_chars = ft_print_pointer(va_arg(args,unsigned int));
+		printed_chars = ft_print_pointer(va_arg(args,unsigned long long));
 	else if (str[i] == 'd')
 		printed_chars = ft_print_number(va_arg(args,int));
 	else if (str[i] == 'i')
@@ -45,9 +45,9 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 	else if (str[i] == 'u')
 		printed_chars = ft_print_number(va_arg(args,unsigned int));
 	else if (str[i] == 'x')
-		return (1);
+		printed_chars = ft_print_hex(va_arg(args,unsigned int ), 0);
 	else if (str[i] == 'X')
-		return (1);
+		printed_chars = ft_print_hex(va_arg(args,unsigned int ) , 1);
 	else if (str[i] == '%')
 		printed_chars = ft_print_char('%');
 	return (printed_chars);

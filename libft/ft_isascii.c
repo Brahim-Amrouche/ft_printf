@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: bamrouch <bamrouch@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 16:00:57 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 14:58:25 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/10/13 01:56:15 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libc.h"
 
 int	ft_isascii(int c)
 {

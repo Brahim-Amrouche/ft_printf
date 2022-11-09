@@ -1,29 +1,27 @@
 SRCS = ${wildcard ./srcs/*.c}
 
-LIBFT_SRCS = ${wildcard ./libft/*.c}
-
 SRCS_OBJS = ${SRCS:.c=.o}
-
-LIBFT_OBJS = ${LIBFT_SRCS:.c=.o}
 
 CC = cc
 
-HEADERS = -I./headers 
+HEADERS = -I./headers -I./libft
 
 FLAGS = -Wall -Wextra -Werror -fsanitize=address $(HEADERS)
 
 NAME = libftprintf.a
+
+$(NAME) :  $(SRCS_OBJS)
+	make -C ./libft
+	mv ./libft/libft.a $(NAME)
+	ar -rcs $@ $^
 
 %.o : %.c
 	$(CC) $(FLAGS) -c $< -o $@
 
 all : $(NAME)
 
-$(NAME) : $(SRCS_OBJS) $(LIBFT_OBJS)
-	ar -rcs $@ $^
-
 clean :
-	rm -f $(SRCS_OBJS) $(LIBFT_OBJS)
+	rm -f $(SRCS_OBJS)
 
 fclean : clean
 	rm -f $(NAME)
@@ -34,4 +32,4 @@ dev : all clean
 	rm -f a.out
 	$(CC) $(FLAGS) main.c $(NAME)
 
-.PHONY : all clean fclean re	
+.PHONY : all clean fclean re dev
