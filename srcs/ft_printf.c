@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/09 19:39:07 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:47:42 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 	size_t			i;
 	t_grouped_flags	flags;
 
-	printed_chars = 0;
+	printed_chars = -1;
 	ft_bzero(&flags, sizeof(t_grouped_flags));
 	i = ft_parse_flags(str, &flags, index);
 	if (str[i] == 'c')
@@ -45,9 +45,9 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 	else if (str[i] == 'u')
 		printed_chars = ft_print_number(va_arg(args,unsigned int));
 	else if (str[i] == 'x')
-		printed_chars = ft_print_hex(va_arg(args,unsigned int ), 0);
+		printed_chars = ft_print_hex(va_arg(args,unsigned int), 0);
 	else if (str[i] == 'X')
-		printed_chars = ft_print_hex(va_arg(args,unsigned int ) , 1);
+		printed_chars = ft_print_hex(va_arg(args,unsigned int) , 1);
 	else if (str[i] == '%')
 		printed_chars = ft_print_char('%');
 	return (printed_chars);
@@ -56,23 +56,29 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 int	ft_printf(char *s, ...)
 {
 	size_t	i;
-	size_t	printed_chars;
+	int	printed_chars[2];
 	va_list	args;
 
+	if (!s)
+		return (-1);
 	va_start(args, s);
 	i = 0;
-	printed_chars = 0;
+	printed_chars[0] = 0;
 	while (s[i])
 	{
 		if (s[i] == '%')
 		{
-			printed_chars += ft_manage_printf_flags(args, s + i, &i);
-			i++;
+			printed_chars[1] = ft_manage_printf_flags(args, s + i, &i);
+			if (s[i] && printed_chars >= 0)
+			{
+				printed_chars[0] += printed_chars[1];
+				i++;
+			}
 			continue ;
 		}
-		printed_chars += ft_print_char(s[i]);
+		printed_chars[0] += ft_print_char(s[i]);
 		i++;
 	}
 	va_end(args);
-	return (printed_chars);
+	return (printed_chars[0]);
 }

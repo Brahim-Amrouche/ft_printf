@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:07:50 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 15:13:00 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/10 10:52:44 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void	ft_is_precision_flag(char *str, t_printf_flag *flag)
 	}
 	flag->skip = 0;
 }
+
+
 
 void	ft_is_plus_flag(char c, t_printf_flag *flag)
 {

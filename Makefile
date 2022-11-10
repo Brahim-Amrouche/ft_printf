@@ -11,7 +11,7 @@ FLAGS = -Wall -Wextra -Werror -fsanitize=address $(HEADERS)
 NAME = libftprintf.a
 
 $(NAME) :  $(SRCS_OBJS)
-	make -C ./libft
+	make -C ./libft bonus
 	mv ./libft/libft.a $(NAME)
 	ar -rcs $@ $^
 

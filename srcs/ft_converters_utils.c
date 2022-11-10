@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:06:19 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/09 19:38:47 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/10 00:50:58 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ size_t	ft_print_hex(unsigned long long value,int maj)
 	}
 }
 
-size_t	ft_print_decimal(long d)
+size_t	ft_print_decimal(long long d)
 {
 	size_t len;
 
