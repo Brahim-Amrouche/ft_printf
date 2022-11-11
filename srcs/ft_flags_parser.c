@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:21:24 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/06 17:55:52 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/11 21:45:49 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ size_t	ft_parse_flags(char *str, t_grouped_flags *flags, size_t *index)
 			break ;
 		i += ft_sum_skip(*flags);
 	}
-	*index += i;
+	if (str[i])
+		*index += i;
 	return (i);
 }

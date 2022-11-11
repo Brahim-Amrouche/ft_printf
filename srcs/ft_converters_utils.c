@@ -6,29 +6,29 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:06:19 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/10 00:50:58 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/11 20:47:35 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-size_t	ft_print_hex(unsigned long long value,int maj)
+size_t	ft_print_hex(unsigned long long value,int upper)
 {
 	size_t	len;
 
 	len = 0;
 	if (value >= 16)
 	{
-		len += ft_print_hex(value / 16,maj);
-		len += ft_print_hex(value % 16,maj);
+		len += ft_print_hex(value / 16,upper);
+		len += ft_print_hex(value % 16,upper);
 		return (len);
 	}
 	else
 	{
 		if (value <= 9)
 			return ft_print_char("0123456789"[value]);
-		else if (maj)
+		else if (upper)
 			return ft_print_char("ABCDEF"[value % 10]);
 		else
 			return ft_print_char("abcdef"[value%10]);
