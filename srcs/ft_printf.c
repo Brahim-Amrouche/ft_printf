@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/10 10:47:42 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/11 04:16:24 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,17 +37,13 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 	else if (str[i] == 's')
 		printed_chars = ft_print_str(va_arg(args, char *));
 	else if (str[i] == 'p')
-		printed_chars = ft_print_pointer(va_arg(args,unsigned long long));
-	else if (str[i] == 'd')
-		printed_chars = ft_print_number(va_arg(args,int));
-	else if (str[i] == 'i')
-		printed_chars = ft_print_number(va_arg(args,int));
+		printed_chars = ft_print_pointer(va_arg(args, unsigned long long));
+	else if (str[i] == 'd' || str[i] == 'i')
+		printed_chars = ft_print_number(va_arg(args, int));
 	else if (str[i] == 'u')
-		printed_chars = ft_print_number(va_arg(args,unsigned int));
-	else if (str[i] == 'x')
-		printed_chars = ft_print_hex(va_arg(args,unsigned int), 0);
-	else if (str[i] == 'X')
-		printed_chars = ft_print_hex(va_arg(args,unsigned int) , 1);
+		printed_chars = ft_print_number(va_arg(args, unsigned int));
+	else if (str[i] == 'x' || str[i] == 'X')
+		printed_chars = ft_print_hex(va_arg(args, unsigned int), str[i] == 'X');
 	else if (str[i] == '%')
 		printed_chars = ft_print_char('%');
 	return (printed_chars);
@@ -56,7 +52,7 @@ int	ft_manage_printf_flags(va_list args, char *str, size_t *index)
 int	ft_printf(char *s, ...)
 {
 	size_t	i;
-	int	printed_chars[2];
+	int		printed_chars[2];
 	va_list	args;
 
 	if (!s)
@@ -69,11 +65,9 @@ int	ft_printf(char *s, ...)
 		if (s[i] == '%')
 		{
 			printed_chars[1] = ft_manage_printf_flags(args, s + i, &i);
-			if (s[i] && printed_chars >= 0)
-			{
+			if (printed_chars[1] >= 0)
 				printed_chars[0] += printed_chars[1];
-				i++;
-			}
+			i++;
 			continue ;
 		}
 		printed_chars[0] += ft_print_char(s[i]);
