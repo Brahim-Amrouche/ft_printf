@@ -6,13 +6,13 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 15:07:50 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/10 10:52:44 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:58:47 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_is_format_flag(char *str, t_printf_flag *flag)
+void	ft_is_format_flag(const char *str, t_printf_flag *flag)
 {
 	if (str[0] == '#')
 	{
@@ -23,7 +23,7 @@ void	ft_is_format_flag(char *str, t_printf_flag *flag)
 	flag->skip = 0;
 }
 
-void	ft_is_precision_flag(char *str, t_printf_flag *flag)
+void	ft_is_precision_flag(const char *str, t_printf_flag *flag)
 {
 	if (str[0] == '.')
 	{
@@ -36,7 +36,7 @@ void	ft_is_precision_flag(char *str, t_printf_flag *flag)
 
 
 
-void	ft_is_plus_flag(char c, t_printf_flag *flag)
+void	ft_is_plus_flag(const char c, t_printf_flag *flag)
 {
 	if (c == '+')
 	{
@@ -47,7 +47,7 @@ void	ft_is_plus_flag(char c, t_printf_flag *flag)
 	flag->skip = 0;
 }
 
-void	ft_is_space_flag(char c, t_printf_flag *flag)
+void	ft_is_space_flag(const char c, t_printf_flag *flag)
 {
 	if (c == ' ')
 	{
@@ -58,7 +58,7 @@ void	ft_is_space_flag(char c, t_printf_flag *flag)
 	flag->skip = 0;
 }
 
-void	ft_is_minus_flag(char *str, t_printf_flag *flag)
+void	ft_is_minus_flag(const char *str, t_printf_flag *flag)
 {
 	if (str[0] == '-')
 	{

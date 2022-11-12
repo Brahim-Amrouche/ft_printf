@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 01:18:24 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/11 21:46:32 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:31:09 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int	main(void)
 {
-	char *s = "%d %s%s";
-
-	ft_printf(s, 55, "www", "hl");
+	printf("printed chars== %d",printf("|%-10c|",48));
 	// int x = 0;
 	// //x = printf("hello %");
 	// int y = ft_printf("|hello |%  ,n|\n not low");l

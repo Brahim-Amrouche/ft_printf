@@ -6,14 +6,14 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 19:06:19 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/11 20:47:35 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:29:12 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-size_t	ft_print_hex(unsigned long long value,int upper)
+size_t	ft_print_hex(unsigned long value,int upper)
 {
 	size_t	len;
 
@@ -35,7 +35,7 @@ size_t	ft_print_hex(unsigned long long value,int upper)
 	}
 }
 
-size_t	ft_print_decimal(long long d)
+size_t	ft_print_decimal(long d)
 {
 	size_t len;
 

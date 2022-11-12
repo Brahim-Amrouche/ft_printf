@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:07:11 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/11 20:38:18 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:29:50 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
+
+int				ft_printf(const char *s, ...);
 
 typedef enum boolean
 {
@@ -44,22 +46,21 @@ typedef struct s_grouped_flags
 /* Converters Logic */
 size_t				ft_print_char(char c);
 size_t				ft_print_str(char *str);
-size_t				ft_print_hex(unsigned long long value , int upper);
-size_t				ft_print_pointer(unsigned long long p);
-size_t				ft_print_decimal(long long d);
-size_t				ft_print_number(long long i);
+size_t				ft_print_hex(unsigned long value , int upper);
+size_t				ft_print_pointer(unsigned long p);
+size_t				ft_print_decimal(long d);
+size_t				ft_print_number(long i);
 /* end Converts Logic */
 
 /* Flags Logic */
-void				ft_is_format_flag(char *str, t_printf_flag *flag);
-void				ft_is_precision_flag(char *str, t_printf_flag *flag);
-void				ft_is_plus_flag(char c, t_printf_flag *flag);
-void				ft_is_space_flag(char c, t_printf_flag *flag);
-void				ft_is_minus_flag(char *str, t_printf_flag *flag);
-size_t				ft_parse_flags(char *str, t_grouped_flags *flags,
+void				ft_is_format_flag(const char *str, t_printf_flag *flag);
+void				ft_is_precision_flag(const char *str, t_printf_flag *flag);
+void				ft_is_plus_flag(const char c, t_printf_flag *flag);
+void				ft_is_space_flag(const char c, t_printf_flag *flag);
+void				ft_is_minus_flag(const char *str, t_printf_flag *flag);
+size_t				ft_parse_flags(const char *str, t_grouped_flags *flags,
 						size_t *index);
 /* end Flags Logic*/
 
-int					ft_printf(char *s, ...);
 
 #endif

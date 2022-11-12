@@ -6,13 +6,13 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:21:24 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/11 21:45:49 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:57:24 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_is_zero_flag(char *str, t_printf_flag *flag)
+void	ft_is_zero_flag(const char *str, t_printf_flag *flag)
 {
 	if (str[0] == '0')
 	{
@@ -29,7 +29,7 @@ size_t	ft_sum_skip(t_grouped_flags flags)
 		+ flags.space.skip + flags.minus.skip + flags.zero.skip);
 }
 
-size_t	ft_parse_flags(char *str, t_grouped_flags *flags, size_t *index)
+size_t	ft_parse_flags(const char *str, t_grouped_flags *flags, size_t *index)
 {
 	size_t	i;
 

@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:13:44 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/12 10:35:09 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 12:10:37 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int main()
     print_white();
     printf("Mandatory ------------------------------------------------------\n");
     // BREAKERS
-    printf("Basic Tests ---------- \n");
+    printf("No format Tests ---------- \n");
     print_test_result(ft_printf("hello") == 5,"Basic run : simple 'hello' print");
     print_test_result(ft_printf("")== 0 , "Basic run : empty string");
     print_test_result(ft_printf(NULL)== -1,"Basic run : NULL string pointer as first parameter");

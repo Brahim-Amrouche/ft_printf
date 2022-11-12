@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:02:26 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/11 04:29:25 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 13:30:11 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ size_t	ft_print_str(char *str)
 	return (i);
 }
 
-size_t	ft_print_pointer(unsigned long long p)
+size_t	ft_print_pointer(unsigned long p)
 {
 	return (ft_print_str("0x") + ft_print_hex(p, 0));
 }
 
-size_t	ft_print_number(long long i)
+size_t	ft_print_number(long i)
 {
 	return (ft_print_decimal(i));
 }

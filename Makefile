@@ -6,7 +6,7 @@ CC = cc
 
 HEADERS = -I./headers -I./libft
 
-FLAGS = -Wall -Wextra -Werror -fsanitize=address $(HEADERS)
+FLAGS = -Wall -Wextra -Werror $(HEADERS)
 
 NAME = libftprintf.a
 
