@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/12 13:28:24 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:08:44 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@
 // 	printf("zero exists == %d \n ------------- \n", flags.zero.exists);
 // }
 
-ssize_t	ft_manage_converters(va_list args,const char *str)
+ssize_t	ft_manage_converters(va_list args, const char *str,
+		t_grouped_flags flags)
 {
-	ssize_t printed_chars;
-	
+	ssize_t	printed_chars;
+
 	printed_chars = -1;
 	if (str[0] == 'c')
-		printed_chars = ft_print_char(va_arg(args, int));
+		printed_chars = ft_print_char(va_arg(args, int), &flags);
 	else if (str[0] == 's')
 		printed_chars = ft_print_str(va_arg(args, char *));
 	else if (str[0] == 'p')
@@ -41,12 +42,11 @@ ssize_t	ft_manage_converters(va_list args,const char *str)
 	else if (str[0] == 'x' || str[0] == 'X')
 		printed_chars = ft_print_hex(va_arg(args, unsigned int), str[0] == 'X');
 	else if (str[0] == '%')
-		printed_chars = ft_print_char('%');
+		printed_chars = ft_print_char('%', &flags);
 	return (printed_chars);
 }
 
-
-int	ft_manage_printf_flags(va_list args,const char *str, size_t *index)
+int	ft_manage_printf_flags(va_list args, const char *str, size_t *index)
 {
 	ssize_t			printed_chars;
 	size_t			i;
@@ -54,8 +54,7 @@ int	ft_manage_printf_flags(va_list args,const char *str, size_t *index)
 
 	ft_bzero(&flags, sizeof(t_grouped_flags));
 	i = ft_parse_flags(str, &flags, index);
-	printed_chars = ft_manage_converters(args,str + i);
-
+	printed_chars = ft_manage_converters(args, str + i, flags);
 	return (printed_chars);
 }
 
@@ -80,7 +79,7 @@ int	ft_printf(const char *s, ...)
 			i++;
 			continue ;
 		}
-		printed_chars[0] += ft_print_char(s[i]);
+		printed_chars[0] += ft_print_char(s[i], NULL);
 		i++;
 	}
 	va_end(args);

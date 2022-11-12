@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:07:11 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/12 13:29:50 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 19:08:10 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 
-int				ft_printf(const char *s, ...);
+int					ft_printf(const char *s, ...);
 
 typedef enum boolean
 {
@@ -44,9 +44,9 @@ typedef struct s_grouped_flags
 }					t_grouped_flags;
 
 /* Converters Logic */
-size_t				ft_print_char(char c);
+size_t				ft_print_char(char c, t_grouped_flags *flags);
 size_t				ft_print_str(char *str);
-size_t				ft_print_hex(unsigned long value , int upper);
+size_t				ft_print_hex(unsigned long value, int upper);
 size_t				ft_print_pointer(unsigned long p);
 size_t				ft_print_decimal(long d);
 size_t				ft_print_number(long i);
@@ -61,6 +61,5 @@ void				ft_is_minus_flag(const char *str, t_printf_flag *flag);
 size_t				ft_parse_flags(const char *str, t_grouped_flags *flags,
 						size_t *index);
 /* end Flags Logic*/
-
 
 #endif
