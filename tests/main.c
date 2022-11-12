@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 11:13:44 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/12 09:15:17 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/12 10:35:09 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int main()
     print_test_result(ft_printf("hello") == 5,"Basic run : simple 'hello' print");
     print_test_result(ft_printf("")== 0 , "Basic run : empty string");
     print_test_result(ft_printf(NULL)== -1,"Basic run : NULL string pointer as first parameter");
-    print_test_result(ft_printf("hello there % lx") == 13,"Basic run : Not handled converter");
-    print_test_result(ft_printf("still %lu %n s")== 10 , "Basic run : Another Not handled converters");
+    print_test_result(ft_printf("hello there % lx") >= 0,"Basic run : Not handled converter");
+    print_test_result(ft_printf("still %lu %n s") >= 0 , "Basic run : Another Not handled converters");
     print_test_result(ft_printf("%")== 0,"Basic run : % before the \\0");
     // %c converter
     print_white();
@@ -82,6 +82,28 @@ int main()
     print_test_result(ft_printf("%u",-1) == printf("%u",-1),"Unsigned Integer converter with negative value passed");
     print_test_result(ft_printf("%u",UINT_MAX) == printf("%u",UINT_MAX),"Unsigned Integer converter with UINT_MAX");
     print_test_result(ft_printf("%u",4294967295 + 2) == 1,"Unsigned Integer converter with Overflow");
+    // %x
+    print_white();
+    printf("Hexadecimal LowerCase Test ----------- \n");
+    print_test_result(ft_printf("%x")>= 0 , "Hexadcimal LowerCase Converter with no value passed");
+    print_test_result(ft_printf("%x",0) == 1 , "Hexadcimal LowerCase Converter with value zero");
+    print_test_result(ft_printf("%x",15) == printf("%x",15) , "Hexadcimal LowerCase Converter with positive value");
+    print_test_result(ft_printf("%x",-69) == printf("%x",-69) , "Hexadcimal LowerCase Converter with negative value");
+    // %X
+    print_white();
+    printf("Hexadecimal UpperCase Test ----------- \n");
+    print_test_result(ft_printf("%X")>= 0 , "Hexadcimal UpperCase Converter with no value passed");
+    print_test_result(ft_printf("%X",0) == 1 , "Hexadcimal UpperCase Converter with value zero");
+    print_test_result(ft_printf("%X",15) == printf("%X",15) , "Hexadcimal UpperCase Converter with positive value");
+    print_test_result(ft_printf("%X",-69) == printf("%X",-69) , "Hexadcimal UpperCase Converter with negative value");
+    
+    // %%
+    printf("Percentage Test ----------- \n");
+    print_test_result(ft_printf("%%")== 1 , "Percentage Converter");
+
+    // Mixed Tests
+    s = "%c|%s|%p|%d|%i|%u|%x|%X|%%";
+    print_test_result(ft_printf(s,'a',"hello",s,10,10,10,-1,-1) == 48,"All Flags in one");
 
     // BREAKERS
     print_white();
