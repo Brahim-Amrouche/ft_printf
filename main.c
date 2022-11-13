@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 01:18:24 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/12 19:08:16 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/13 03:32:00 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(void)
 {
-	int x = printf("%-------------3c", 'a');
-	int y = ft_printf("%-----------3c", 'a');
+	int x = printf("|%-------------3d|", 10);
+	int y = ft_printf("|%-----------3d|", 10);
 
-	printf("this is original %d === and mine %d", x, y);
+	printf("\n this is original %d === and mine %d \n", x, y);
 	// int x = 0;
 	// //x = printf("hello %");
 	// int y = ft_printf("|hello |%  ,n|\n not low");l

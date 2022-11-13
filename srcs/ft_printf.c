@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/12 19:08:44 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/13 03:28:36 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,13 @@ ssize_t	ft_manage_converters(va_list args, const char *str,
 	if (str[0] == 'c')
 		printed_chars = ft_print_char(va_arg(args, int), &flags);
 	else if (str[0] == 's')
-		printed_chars = ft_print_str(va_arg(args, char *));
+		printed_chars = ft_print_str(va_arg(args, char *), &flags);
 	else if (str[0] == 'p')
-		printed_chars = ft_print_pointer(va_arg(args, unsigned long));
+		printed_chars = ft_print_pointer(va_arg(args, unsigned long),&flags);
 	else if (str[0] == 'd' || str[0] == 'i')
-		printed_chars = ft_print_number(va_arg(args, int));
+		printed_chars = ft_print_number(va_arg(args, int),&flags);
 	else if (str[0] == 'u')
-		printed_chars = ft_print_number(va_arg(args, unsigned int));
+		printed_chars = ft_print_number(va_arg(args, unsigned int),&flags);
 	else if (str[0] == 'x' || str[0] == 'X')
 		printed_chars = ft_print_hex(va_arg(args, unsigned int), str[0] == 'X');
 	else if (str[0] == '%')
