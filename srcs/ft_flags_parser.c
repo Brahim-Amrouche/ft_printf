@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 13:21:24 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/13 16:59:32 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/13 17:53:25 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,17 @@ size_t ft_handle_initial_flags(const char *str,t_grouped_flags *flags)
 	while(ft_is_flag(str[++i]))
 	{
 		if (str[i] == '0')
-			flags->zero.exists = TRUE;
+			flags->zero= TRUE;
 		else if (str[i] == '-')
-			flags->minus.exists = TRUE;
+			flags->minus = TRUE;
 		else if (str[i] == '#')
-			flags->format.exists = TRUE;
+			flags->format = TRUE;
 		else if (str[i] == '+')
-			flags->plus.exists = TRUE;
+			flags->plus = TRUE;
 		else if (str[i] == ' ')
-			flags->space.exists = TRUE;
+			flags->space = TRUE;
 		else if (str[i] == '.')
-			flags->precision.exists = TRUE;
+			flags->precision = TRUE;
 	}
 	return i;
 }
@@ -48,15 +48,15 @@ size_t ft_parse_flags(const char *str, t_grouped_flags *flags)
 	size_t i;
 
 	i = ft_handle_initial_flags(str,flags);
-	if (flags->precision.exists)
+	if (flags->precision)
 		flags->precision_size = ft_atoi(&str[i]);
 	else
 		flags->offset_size = ft_atoi(&str[i]);
 	while(ft_isdigit(str[i]))
 		i++;
-	if (str[i] && str[i] == '.' && !(flags->precision.exists))
+	if (str[i] && str[i] == '.' && !(flags->precision))
 	{
-		flags->precision.exists = TRUE;
+		flags->precision = TRUE;
 		flags->precision_size = ft_atoi(&str[++i]);
 	}
 	while (ft_isdigit(str[i]))

@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:02:26 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/13 14:22:56 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/13 19:30:44 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,22 +55,33 @@ size_t	ft_print_pointer(unsigned long p, t_grouped_flags *flags)
 size_t	ft_print_number(long i, t_grouped_flags *flags)
 {
 	ssize_t	printed_chars;
-	ssize_t	offset;
+	ssize_t	offset[2];
 
-	printed_chars = ft_print_decimal(i);
-	offset = ft_handle_minus_flag(flags, printed_chars);
-	if (offset != -1)
-		return (offset);
+	offset[0] = ft_decimal_len(i);
+	printed_chars = 0;
+	if (i < 0)
+	{
+		printed_chars += ft_print_char('-', NULL);
+		i *= -1;
+	}
+	printed_chars += ft_handle_zero_flag(flags, offset[0]);
+	printed_chars += ft_print_decimal(i);
+	offset[1] = ft_handle_minus_flag(flags, printed_chars);
+	if (offset[1] != -1)
+		return (offset[1]);
 	return (printed_chars);
 }
 
-size_t ft_print_hex_converter(unsigned long p,int is_upper,t_grouped_flags *flags)
+size_t	ft_print_hex_converter(unsigned long p, int is_upper,
+		t_grouped_flags *flags)
 {
-	ssize_t printed_chars;
-	ssize_t offset;
+	ssize_t	printed_chars;
+	ssize_t	offset;
 
-	printed_chars = ft_print_hex(p,is_upper);
-	offset = ft_handle_minus_flag(flags,printed_chars);
+	printed_chars = 0;
+	printed_chars += ft_handle_zero_flag(flags, ft_hex_len(p));
+	printed_chars += ft_print_hex(p, is_upper);
+	offset = ft_handle_minus_flag(flags, printed_chars);
 	if (offset != -1)
 		return (offset);
 	return (printed_chars);
