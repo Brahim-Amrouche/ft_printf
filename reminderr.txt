@@ -20,3 +20,8 @@ bonus tags:
 .n is a modifiers 
 
 # is a modifier as well
+
+----------------------
+
+0 : works on %X %x %d %i %u %%
+- : works on everything

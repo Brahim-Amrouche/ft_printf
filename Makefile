@@ -30,6 +30,6 @@ re : fclean all
 
 dev : all clean 
 	rm -f a.out
-	$(CC) $(FLAGS) main.c $(NAME)
+	$(CC) $(FLAGS) -fsanitize=address main.c $(NAME)
 
 .PHONY : all clean fclean re dev

@@ -6,22 +6,12 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/13 03:28:36 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/13 16:23:55 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
-
-// void	print_flags(t_grouped_flags flags)
-// {
-// 	printf("format exists == %d \n", flags.format.exists);
-// 	printf("precision exists == %d \n", flags.precision.exists);
-// 	printf("plus exists == %d \n", flags.plus.exists);
-// 	printf("space exists == %d \n", flags.space.exists);
-// 	printf("minus exists == %d \n", flags.minus.exists);
-// 	printf("zero exists == %d \n ------------- \n", flags.zero.exists);
-// }
 
 ssize_t	ft_manage_converters(va_list args, const char *str,
 		t_grouped_flags flags)
@@ -34,13 +24,14 @@ ssize_t	ft_manage_converters(va_list args, const char *str,
 	else if (str[0] == 's')
 		printed_chars = ft_print_str(va_arg(args, char *), &flags);
 	else if (str[0] == 'p')
-		printed_chars = ft_print_pointer(va_arg(args, unsigned long),&flags);
+		printed_chars = ft_print_pointer(va_arg(args, unsigned long), &flags);
 	else if (str[0] == 'd' || str[0] == 'i')
-		printed_chars = ft_print_number(va_arg(args, int),&flags);
+		printed_chars = ft_print_number(va_arg(args, int), &flags);
 	else if (str[0] == 'u')
-		printed_chars = ft_print_number(va_arg(args, unsigned int),&flags);
+		printed_chars = ft_print_number(va_arg(args, unsigned int), &flags);
 	else if (str[0] == 'x' || str[0] == 'X')
-		printed_chars = ft_print_hex(va_arg(args, unsigned int), str[0] == 'X');
+		printed_chars = ft_print_hex_converter(va_arg(args, unsigned int),
+				str[0] == 'X', &flags);
 	else if (str[0] == '%')
 		printed_chars = ft_print_char('%', &flags);
 	return (printed_chars);
@@ -53,7 +44,8 @@ int	ft_manage_printf_flags(va_list args, const char *str, size_t *index)
 	t_grouped_flags	flags;
 
 	ft_bzero(&flags, sizeof(t_grouped_flags));
-	i = ft_parse_flags(str, &flags, index);
+	i = ft_parse_flags(str, &flags);
+	(*index) += i;
 	printed_chars = ft_manage_converters(args, str + i, flags);
 	return (printed_chars);
 }
