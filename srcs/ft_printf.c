@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/13 16:23:55 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/14 14:11:55 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ ssize_t	ft_manage_converters(va_list args, const char *str,
 	else if (str[0] == 'p')
 		printed_chars = ft_print_pointer(va_arg(args, unsigned long), &flags);
 	else if (str[0] == 'd' || str[0] == 'i')
-		printed_chars = ft_print_number(va_arg(args, int), &flags);
+		printed_chars = ft_print_number(va_arg(args, int), &flags, FALSE);
 	else if (str[0] == 'u')
-		printed_chars = ft_print_number(va_arg(args, unsigned int), &flags);
+		printed_chars = ft_print_number(va_arg(args, unsigned int), &flags,
+				TRUE);
 	else if (str[0] == 'x' || str[0] == 'X')
 		printed_chars = ft_print_hex_converter(va_arg(args, unsigned int),
-				str[0] == 'X', &flags);
+							str[0] == 'X',
+							&flags);
 	else if (str[0] == '%')
-		printed_chars = ft_print_char('%', &flags);
+		printed_chars = ft_print_percentage(&flags);
 	return (printed_chars);
 }
 
