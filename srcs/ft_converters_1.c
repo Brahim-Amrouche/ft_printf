@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:02:26 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/16 15:03:30 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/16 16:19:14 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,21 @@ size_t	ft_print_hex_converter(unsigned long p, t_boolean is_upper,
 	ssize_t hex_len;
 
 	hex_len = ft_hex_len(p);
+	if ( flags->format && p != 0)
+		hex_len += 2;
 	printed_chars = 0;
 	if (hex_len > flags->precision_size ||  !(flags->precision))
 		printed_chars += ft_handle_left_padding(flags, hex_len, flags->precision);
 	else
 		printed_chars += ft_handle_left_padding(flags, flags->precision_size , flags->precision);
-	printed_chars += ft_handle_zero_flag(flags, hex_len , flags->precision, hex_len);
+	if (flags->format && p != 0)
+	{
+		if(is_upper)
+			printed_chars += ft_print_str("0X",NULL);
+		else
+			printed_chars += ft_print_str("0x",NULL);
+	}
+	printed_chars += ft_handle_zero_flag(flags, hex_len, flags->precision, hex_len);
 	printed_chars += ft_print_hex(p, is_upper);
 	printed_chars += ft_handle_minus_flag(flags, printed_chars);
 	return (printed_chars);
