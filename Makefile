@@ -12,7 +12,7 @@ NAME = libftprintf.a
 
 $(NAME) :  $(SRCS_OBJS)
 	make -C ./libft bonus
-	mv ./libft/libft.a $(NAME)
+	cp ./libft/libft.a $(NAME)
 	ar -rcs $@ $^
 
 %.o : %.c
