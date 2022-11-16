@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 21:07:11 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/15 18:43:30 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/15 21:44:41 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,15 @@ size_t			ft_print_percentage(t_grouped_flags *flags);
 /* end Converts Logic */
 
 /* Flags Logic */
-ssize_t			ft_handle_minus_flag(t_grouped_flags *flags,
-					ssize_t printed_len);
+ssize_t	ft_handle_minus_flag(t_grouped_flags *flags,
+								ssize_t printed_len);
 ssize_t			ft_handle_zero_flag(t_grouped_flags *flags, ssize_t printed_len,
-					t_boolean is_number_precision);
+					t_boolean is_number_precision, ssize_t decimal_len);
 ssize_t			ft_handle_plus_and_space_flag(t_grouped_flags *flags, long i,
 					t_boolean is_unsigned);
-ssize_t			ft_handle_left_padding(t_grouped_flags *flags,
-					ssize_t printed_len,
-					t_boolean is_number_precision);
+ssize_t	ft_handle_left_padding(t_grouped_flags *flags,
+								ssize_t printed_len,
+								t_boolean is_number_precision);
 size_t			ft_parse_flags(const char *str, t_grouped_flags *flags);
 /* end Flags Logic*/
 
