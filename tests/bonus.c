@@ -218,8 +218,32 @@ void bonus ()
     print_test_result(ft_printf("|%3x|",20) == printf("|%3x|",20) ,"Optional -- Lower Case Hexadecimal converter with 'left margin' flag ");
     print_test_result(ft_printf("|%9x|",-20) == printf("|%9x|",-20) ,"Optional -- Lower Case Hexadecimal converter with 'left margin' flag : with negative value");
     print_test_result(ft_printf("|%1x|",20) == printf("|%1x|",20) ,"Optional -- Lower Case Hexadecimal converter with 'left margin' flag : less than characters count");
-    print_test_result(ft_printf("|%#3.5x|",5) == printf("|%#.5x|",5) , "Lower Case Hexadecimal converter mixed flags 1");
+    print_test_result(ft_printf("|%#2.3x|",20) == printf("|%#2.3x|",20) , "Lower Case Hexadecimal converter mixed flags 1");
+    print_test_result(ft_printf("|%#3.2x|",10) == printf("|%#3.2x|",10) , "Lower Case Hexadecimal converter mixed flags 2");
+    print_test_result(ft_printf("|%#.2x|",0) == printf("|%#.2x|",0) , "Lower Case Hexadecimal converter mixed flags 3");
+    print_test_result(ft_printf("|%#.x|",0) == printf("|%#.x|",0) , "Lower Case Hexadecimal converter mixed flags 4");
+    print_test_result(ft_printf("|%-#15.12x|",-1) == printf("|%-#15.12x|",-1) , "Lower Case Hexadecimal converter mixed flags 5");
+    print_test_result(ft_printf("|%#015.12x|",-1) == printf("|%#015.12x|",-1) , "Lower Case Hexadecimal converter mixed flags 6");
 
+
+    print_white();
+    printf("\n Percentage converter with flags \n");
+    print_test_result(ft_printf("|%000010%|") == printf("|%000010%|"),"Percentage converter with 0 flag");
+    print_test_result(ft_printf("|%000001%|") == printf("|%000001%|"),"Percentage converter with 0 flag : with less than char count");
+    print_test_result(ft_printf("|%00000%|") == printf("|%00000%|"),"Percentage converter with 0 flag : with no count" );
+        print_test_result(ft_printf("|%---10%|") == printf("|%---10%|"),"Percentage converter with - flag");
+    print_test_result(ft_printf("|%-1%|") == printf("|%-1%|"),"Percentage converter with - flag : with less than char count");
+    print_test_result(ft_printf("|%-%|") == printf("|%-%|"),"Percentage converter with - flag : with no count" );
+    print_test_result(ft_printf("|%.19%|") == printf("|%.19%|"),"Percentage converter with . flag");
+    print_test_result(ft_printf("|%...%|") == 2,"Percentage converter with multiple . flags");
+    print_test_result(ft_printf("|%###%|") == printf("|%###%|"),"Percentage converter with # flag");
+    print_test_result(ft_printf("|%   %|") == printf("|%   %|"),"Percentage converter with 'space' flag");
+    print_test_result(ft_printf("|%+++%|") == printf("|%+++%|"),"Percentage converter with + flag");
+    print_test_result(ft_printf("|%10%|") == printf("|%10%|"),"Optional -- Percentage converter with 'left margin' flag");
+    print_test_result(ft_printf("|%1%|") == printf("|%1%|"),"Optional -- Percentage converter with 'left margin' flag : with less than characters count");
+    print_test_result(ft_printf("|%---   +++###00010.3%|") == printf("|%----   +++###00010.3%|"),"Percentage converter with mixed flags");
+
+    
     print_white();
     printf("End Bonus ---------------------------------------------------\n");
 }
