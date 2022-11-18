@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 20:56:58 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/14 14:11:55 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/18 17:32:23 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ ssize_t	ft_manage_converters(va_list args, const char *str,
 				TRUE);
 	else if (str[0] == 'x' || str[0] == 'X')
 		printed_chars = ft_print_hex_converter(va_arg(args, unsigned int),
-							str[0] == 'X',
-							&flags);
+				str[0] == 'X',
+				&flags);
 	else if (str[0] == '%')
 		printed_chars = ft_print_percentage(&flags);
 	return (printed_chars);

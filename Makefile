@@ -1,4 +1,4 @@
-SRCS = ${wildcard ./srcs/*.c}
+SRCS = ./srcs/ft_converters_1.c ./srcs/ft_converters_utils.c ./srcs/ft_flags_applier.c ./srcs/ft_flags_parser.c ./srcs/ft_printf.c
 
 SRCS_OBJS = ${SRCS:.c=.o}
 
@@ -32,8 +32,4 @@ re : fclean all
 
 bonus : all
 
-dev : all clean 
-	rm -f a.out
-	$(CC) $(FLAGS) -fsanitize=address main.c $(NAME)
-
-.PHONY : all clean fclean re dev
+.PHONY : all clean fclean re
