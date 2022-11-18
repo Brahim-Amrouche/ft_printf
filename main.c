@@ -6,13 +6,13 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 01:18:24 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/16 16:49:03 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/18 04:23:44 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-#define ARG "|%#10X|\n" , 0
+#define ARG "|%#10x|\n" , 10
 
 int	main(void)
 {

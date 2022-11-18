@@ -6,7 +6,7 @@
 /*   By: bamrouch <bamrouch@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 18:02:26 by bamrouch          #+#    #+#             */
-/*   Updated: 2022/11/16 17:43:01 by bamrouch         ###   ########.fr       */
+/*   Updated: 2022/11/18 04:21:50 by bamrouch         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,13 +65,14 @@ size_t	ft_print_number(long i, t_grouped_flags *flags, t_boolean is_unsigned)
 
 	printed_chars = 0;
 	decimal_len = ft_decimal_len(i) + (!is_unsigned && i >= 0 && (flags->plus
-				|| flags->space));
+		|| flags->space)) - (flags->precision && i == 0 && flags->precision_size == 0);
 	if (decimal_len > flags->precision_size || !(flags->precision))
-		printed_chars += ft_handle_left_padding(flags, decimal_len,
+		printed_chars += ft_handle_left_padding(flags, decimal_len ,
 				flags->precision);
 	else
 		printed_chars += ft_handle_left_padding(flags, flags->precision_size
-				+ (i < 0), flags->precision);
+				+ (i < 0) + (!is_unsigned && i >= 0 && (flags->plus
+				|| flags->space)) , flags->precision);
 	printed_chars += ft_handle_plus_and_space_flag(flags, i, is_unsigned);
 	if (i < 0)
 	{
@@ -80,7 +81,8 @@ size_t	ft_print_number(long i, t_grouped_flags *flags, t_boolean is_unsigned)
 	}
 	printed_chars += ft_handle_zero_flag(flags, decimal_len, flags->precision,
 			ft_decimal_len(i));
-	printed_chars += ft_print_decimal(i);
+	if ( !(flags->precision && i == 0 && flags->precision_size == 0))
+		printed_chars += ft_print_decimal(i);
 	printed_chars += ft_handle_minus_flag(flags, printed_chars);
 	return (printed_chars);
 }
@@ -91,8 +93,8 @@ size_t	ft_print_hex_converter(unsigned long p, t_boolean is_upper,
 	ssize_t	printed_chars;
 	ssize_t	hex_len;
 
-	hex_len = ft_hex_len(p);
-	if (flags->format && p != 0)
+	hex_len = ft_hex_len(p) - (flags->precision && p == 0 && flags->precision_size == 0);
+	if ( flags->format && p != 0)
 		hex_len += 2;
 	printed_chars = 0;
 	if (hex_len > flags->precision_size || !(flags->precision))
@@ -110,7 +112,8 @@ size_t	ft_print_hex_converter(unsigned long p, t_boolean is_upper,
 	}
 	printed_chars += ft_handle_zero_flag(flags, hex_len, flags->precision,
 			hex_len);
-	printed_chars += ft_print_hex(p, is_upper);
+	if (!(flags->precision && p == 0 && flags->precision_size == 0))
+		printed_chars += ft_print_hex(p, is_upper);
 	printed_chars += ft_handle_minus_flag(flags, printed_chars);
 	return (printed_chars);
 }

@@ -22,11 +22,15 @@ all : $(NAME)
 
 clean :
 	rm -f $(SRCS_OBJS)
+	make -C ./libft clean
 
 fclean : clean
 	rm -f $(NAME)
+	make -C ./libft fclean
 
 re : fclean all
+
+bonus : all
 
 dev : all clean 
 	rm -f a.out
